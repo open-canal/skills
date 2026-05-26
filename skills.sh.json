@@ -1,0 +1,21 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Setup",
+      "description": "Install the open-canal methodology suite, initialize a specification vault, and update global project context.",
+      "skills": ["framework"]
+    },
+    {
+      "title": "Product Plan",
+      "description": "Create closed-loop demand PRDs and scope them into version iterations.",
+      "skills": ["demand", "version"]
+    },
+    {
+      "title": "Implementation Plan",
+      "description": "Generate design prototype prompts, technical development plans, and test plans for downstream AI coding agents.",
+      "skills": ["design", "develop", "test"]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "opencanal",
+  "version": "1.0.0",
+  "description": "AI software specification methodology suite for coding agents: composable skills, shared standards, and templates for product plans and implementation plans.",
+  "keywords": [
+    "agent-skills",
+    "skill-suite",
+    "methodology",
+    "specification-workflow",
+    "ai-agents",
+    "open-canal",
+    "obsidian",
+    "software-specification",
+    "prd",
+    "product-requirements",
+    "product-plan",
+    "version-plan",
+    "implementation-plan",
+    "design",
+    "design-system",
+    "figma",
+    "stitch",
+    "technical-plan",
+    "testing",
+    "test-plan",
+    "open-code",
+    "claude-code",
+    "codex",
+    "opencode",
+    "crush"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-canal/skills.git"
+  }
+}
