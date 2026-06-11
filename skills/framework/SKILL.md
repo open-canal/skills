@@ -84,7 +84,8 @@ Do NOT hardcode the skill list — it must reflect what was actually detected.
 2. Ask only for missing or changed project profile fields.
 3. Update the global project profile and derived routing summary.
 4. Preserve user-authored requirement, version, design, development, and test content.
-5. Run consistency checks from the standard and report any manual migration items.
+5. **Strict migration**: Scan and validate all file locations per skill standards (demand, version, design, develop, test). Move misplaced files to correct locations and update all wikilinks.
+6. Run consistency checks from the standard and report any manual migration items.
 
 ## Output
 

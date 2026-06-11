@@ -34,9 +34,10 @@ Use `.open-canal/templates/design.md` as the document skeleton.
 
 Before generating any prototype prompt, check `.open-canal/design-standards/DESIGN.md` per the standard's DESIGN.md creation/update workflow:
 
-- **Missing** → follow the standard. The standard defines when to pause (all four skeletons empty + no user references) vs when to synthesize.
-- **Incomplete** → report gaps per the standard (tool-dependent: §§1–5 always; §6 Stitch-only).
-- **Complete** → proceed.
+- **Missing** → follow the standard. The standard defines when to synthesize from an existing Stitch project, codebase, brand reference, or user-provided direction, and when to pause for design input.
+- **Invalid** → report malformed front matter, invalid token values, duplicate canonical sections, or token/prose conflicts per the standard.
+- **Underspecified** → report missing design coverage that blocks the target screens, such as missing primary color, typography, layout, or component guidance.
+- **Usable** → proceed.
 
 ### `create`
 
@@ -44,14 +45,14 @@ Before generating any prototype prompt, check `.open-canal/design-standards/DESI
 2. Run the DESIGN.md gate (above). Do not proceed with prototype prompts until DESIGN.md is approved.
 3. Verify PRD closed-loop elements are present per the standard's ambiguity check.
 4. Generate `modules/<module-slug>/requirements/<requirement-slug>/design.md` from the template.
-5. Build the prototype prompt using DESIGN.md §§1–5 for all tools; §6 only for Stitch. Create requirement-local assets folders per the standard.
+5. Build the prototype prompt using DESIGN.md YAML tokens and canonical markdown sections (`Overview`, `Colors`, `Typography`, `Layout`, `Elevation & Depth`, `Shapes`, `Components`, `Do's and Don'ts`). Create requirement-local assets folders per the standard.
 6. Update the source PRD's design link to point to the new `design.md`.
 7. Report stale assets, DESIGN.md gaps, PRD ambiguity. Mark downstream docs affected.
 
 ### `update`
 
 1. Compare old and new PRD behavior. List every user-visible change before editing the design.
-2. Check DESIGN.md for staleness — if new PRD behavior requires design tokens not in DESIGN.md, report the gap.
+2. Check DESIGN.md for staleness — if new PRD behavior requires tokens, components, or guardrails not in DESIGN.md, report the gap.
 3. Update only affected screens, states, and prompt sections in `design.md`.
 4. Keep previous prototype asset links when still valid. Mark stale assets with file path and reason.
 5. Update the source PRD's design link if it changed.

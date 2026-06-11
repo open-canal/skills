@@ -9,8 +9,37 @@ tags:
 ## Source
 
 PRD: [[./prd]]
-DESIGN.md: [[.open-canal/design-standards/DESIGN.md]] _(loaded)_
+DESIGN.md: [[.open-canal/design-standards/DESIGN.md]] _(loaded and validated)_
 Target tool: [Stitch | Figma]
+Target platform: [iOS | Android | Web | Desktop]
+Viewport: [e.g. 390x844 for iPhone 14]
+
+## DESIGN.md Coverage
+
+### Token Layer
+
+> YAML tokens are the normative values. If prose and tokens conflict, resolve the conflict before generating prototype frames.
+
+| Token Group | Values Used in This Requirement |
+|-------------|----------------------------------|
+| `colors` | [Primary (#...), surface (#...), text (#...), status colors (#...)] |
+| `typography` | [h1, body-md, label-md, etc.] |
+| `rounded` | [sm/md/lg/full values used] |
+| `spacing` | [base scale, gutters, margins, section spacing] |
+| `components` | [button-primary, input, card, nav, domain-specific components] |
+
+### Markdown Sections
+
+| Section | Guidance Applied |
+|---------|------------------|
+| `Overview` | [Brand personality, density, emotional tone.] |
+| `Colors` | [Palette roles and contrast guidance.] |
+| `Typography` | [Hierarchy, family, weight, line-height, label rules.] |
+| `Layout` | [Grid, breakpoints, spacing, containment.] |
+| `Elevation & Depth` | [Shadow, border, tonal-layer strategy.] |
+| `Shapes` | [Corner radius and shape language.] |
+| `Components` | [Component styling and variants.] |
+| `Do's and Don'ts` | [Generation guardrails and pitfalls.] |
 
 ## Screens
 
@@ -29,11 +58,13 @@ Target tool: [Stitch | Figma]
 ## UI Element Checklist per Screen
 
 ### Screen [A]
-- [ ] [Element 1 — e.g. title bar, button, input]
+
+- [ ] [Element 1 - e.g. title bar, button, input]
 - [ ] [Element 2]
 - [ ] [Accessibility: focus order, labels, contrast]
 
 ### Screen [B]
+
 - [ ] [Element 1]
 
 ## Storyboard Order
@@ -47,21 +78,31 @@ Target tool: [Stitch | Figma]
 
 ## Interactions
 
-- [Interaction 1: trigger → response]
-- [Interaction 2: trigger → response]
+- [Interaction 1: trigger -> response]
+- [Interaction 2: trigger -> response]
 
-## Style Constraints
+## Prototype Prompt Constraints
 
-> All visual style MUST come from DESIGN.md. Quote specific DESIGN.md sections.
+> All visual style MUST come from DESIGN.md. Quote specific token values and section guidance.
 
-- **Atmosphere:** [from DESIGN.md §1 — e.g. "sophisticated minimalist sanctuary"]
-- **Platform:** [iOS | Android | Web | Desktop]
-- **Viewport:** [e.g. 390×844 for iPhone 14]
-- **Colors:** Refer to DESIGN.md §2. Use descriptive names + hex codes per DESIGN.md (e.g. "Deep Muted Teal-Navy (#294056)").
-- **Typography:** Refer to DESIGN.md §3. Quote font family, weight per hierarchy, letter-spacing, and line-height rules.
-- **Components:** Refer to DESIGN.md §4. Quote button style, card styling, input styling, and any project-specific component descriptions.
-- **Layout:** Refer to DESIGN.md §5. Quote grid, spacing, alignment, and touch target rules.
-- **Accessibility:** [contrast ratio per DESIGN.md §2, scalable text per DESIGN.md §3]
+- **Colors:** [Use DESIGN.md `colors` tokens and role descriptions.]
+- **Typography:** [Use DESIGN.md `typography` tokens and hierarchy prose.]
+- **Layout:** [Use DESIGN.md `spacing` tokens and `Layout` guidance.]
+- **Elevation:** [Use `Elevation & Depth` guidance.]
+- **Shapes:** [Use `rounded` tokens and `Shapes` guidance.]
+- **Components:** [Use `components` tokens and `Components` prose, including variants.]
+- **Accessibility:** [Contrast and touch target rules from DESIGN.md; if absent, target platform minimums.]
+- **Guardrails:** [Relevant `Do's and Don'ts`.]
+
+## Stitch Sync
+
+> Fill this section when the target tool is Stitch.
+
+- DESIGN.md import method: [not used | pasted | uploaded | imported from URL/GitHub | synced from local asset]
+- Stitch project design system: [not created | created | updated | selected existing]
+- Project default: [not set | set for future screens]
+- Existing screens needing manual re-application: [none | list screens]
+- Export expectation: [DESIGN.md included with exported project zip | N/A]
 
 ## Assets
 
@@ -76,5 +117,5 @@ Target tool: [Stitch | Figma]
 
 ## Acceptance Notes
 
-- [ ] [Note 1 for prototype review — e.g. "Screen X loading state matches PRD empty flow"]
+- [ ] [Note 1 for prototype review - e.g. "Screen X loading state matches PRD empty flow"]
 - [ ] [Note 2]

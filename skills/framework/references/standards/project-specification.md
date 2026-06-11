@@ -393,6 +393,119 @@ Do not treat initialization as a destructive reset.
 
 For `framework update`, treat `.open-canal/project.md` as the main editable artifact. Update `.open-canal/AGENTS.md` and `.open-canal/development-standards/platform.md` only where they mirror project profile fields. Preserve all requirement-level and version-level documents.
 
+### Strict Migration Rules
+
+When migrating or reorganizing content, **MUST** enforce the following file structure per skill standard:
+
+#### Demand Structure (from `demand.md`)
+
+```text
+modules/<module-slug>/
+├── index.md                              # module index with requirement list
+└── requirements/
+    └── <requirement-slug>/
+        └── prd.md                        # requirement PRD (required)
+```
+
+- `module-slug` and `requirement-slug` use lowercase kebab-case, omitting stop words
+- `modules/index.md` must link to all module indexes
+- Each module `index.md` must list all requirements with status
+
+#### Version Structure (from `version.md`)
+
+```text
+version/
+└── x.y.z.md                              # exact semver filename
+```
+
+- Do not create `versions/`, `v1`, `v1.0.0`, or version package directories
+- Version files must link to requirement PRDs using `[[modules/<module-slug>/requirements/<requirement-slug>/prd]]`
+
+#### Design Structure (from `design.md`)
+
+```text
+modules/<module-slug>/requirements/<requirement-slug>/
+├── prd.md
+├── design.md                             # design artifact
+└── assets/
+    ├── prototype/                        # prototype outputs
+    └── references/                       # design references
+```
+
+- `design.md` must link to source PRD and `.open-canal/design-standards/DESIGN.md`
+- Design assets go under requirement-local `assets/`
+
+#### Development Structure (from `development.md`)
+
+```text
+modules/<module-slug>/requirements/<requirement-slug>/
+├── prd.md
+├── design.md                             # optional, for UI requirements
+├── develop.md                            # development plan
+└── assets/
+    ├── client/                           # client implementation assets
+    ├── service/                          # service implementation assets
+    └── database/                         # database implementation assets
+```
+
+- `develop.md` must link to PRD, design (when exists), and version (when referenced)
+
+#### Test Structure (from `test.md`)
+
+```text
+modules/<module-slug>/requirements/<requirement-slug>/
+├── prd.md
+├── design.md                             # optional
+├── develop.md                            # primary source for test
+├── test.md                               # test plan
+└── assets/
+    └── test/                             # test evidence and fixtures
+```
+
+- `test.md` must link to `develop.md` as primary source, derive PRD/design/version links from it
+
+### Migration Workflow
+
+When executing `framework update` on a vault with existing content:
+
+1. **Scan for misplaced files**
+   - Find all `prd.md`, `design.md`, `develop.md`, `test.md` files
+   - Verify each sits in correct `modules/<module>/requirements/<requirement>/` path
+   - Report files in wrong locations as migration items
+
+2. **Validate module structure**
+   - Each module directory must have `index.md` and `requirements/` subdirectory
+   - Create missing `index.md` or `requirements/` directories
+   - Update `modules/index.md` to link to all module indexes
+
+3. **Validate requirement structure**
+   - Each requirement directory must have `prd.md`
+   - `design.md`, `develop.md`, `test.md` are optional but must be in correct location if present
+   - `assets/` directory with subdirectories (`prototype/`, `client/`, `service/`, `database/`, `test/`, `references/`) must exist when corresponding artifacts exist
+
+4. **Validate version structure**
+   - All version files must be in `version/` directory
+   - Filenames must match `x.y.z.md` pattern
+   - Version files must link to valid requirement PRDs
+
+5. **Validate cross-references**
+   - PRD links section must point to valid design/develop/test files
+   - Design must link to valid PRD
+   - Develop must link to valid PRD and design (when UI exists)
+   - Test must link to valid develop.md as primary source
+   - Version files must link to valid requirement PRDs
+   - All wikilinks must resolve to existing files
+
+6. **Execute migration**
+   - Move misplaced files to correct locations
+   - Update all wikilinks to reflect new paths
+   - Update module and requirement indexes
+   - Report all moved files and updated links
+
+7. **Consistency validation**
+   - Run all checks from Consistency Checks section
+   - Report any remaining issues as manual migration items
+
 ## Requirement Pool Model
 
 Requirements live under the owning module at root level:
@@ -436,6 +549,8 @@ modules/<module-slug>/
 
 Agents should verify:
 
+### Global Structure
+
 - root-level `AGENTS.md` and `CLAUDE.md` shims exist and redirect to `.open-canal/`;
 - `.open-canal/AGENTS.md` exists and routes to all skills;
 - `.open-canal/project.md` exists and contains product name, product description, and technical approach;
@@ -443,11 +558,55 @@ Agents should verify:
 - `.open-canal/design-standards/` contains the four skeleton files;
 - `.open-canal/development-standards/` contains the five skeleton files;
 - `.open-canal/templates/` exists with all open-canal runtime templates;
-- `modules/index.md` exists and links to module indexes;
+
+### Module Structure (per `demand.md`)
+
+- `modules/index.md` exists and links to all module indexes;
+- each module directory has `index.md`;
+- each module directory has `requirements/` subdirectory;
+- each module `index.md` lists all requirements with status;
+
+### Requirement Structure (per `demand.md`, `design.md`, `development.md`, `test.md`)
+
+- each accepted requirement has `prd.md` in `modules/<module>/requirements/<requirement>/`;
+- `prd.md` frontmatter contains `tags` and `status` fields;
+- `prd.md` contains all closed-loop elements (actor, scenario, goal, flow, success, failure, empty, permission, cancellation);
+- `prd.md` has links section for design/develop/test/version;
+- `design.md` (when exists) sits in same requirement folder as `prd.md`;
+- `design.md` links to source PRD and `.open-canal/design-standards/DESIGN.md`;
+- `develop.md` (when exists) sits in same requirement folder as `prd.md`;
+- `develop.md` links to PRD, design (when UI exists), and version (when referenced);
+- `test.md` (when exists) sits in same requirement folder as `prd.md`;
+- `test.md` links to `develop.md` as primary source;
+
+### Asset Structure
+
+- requirement-local `assets/` exists when any design/develop/test artifact exists;
+- `assets/prototype/` exists when `design.md` exists;
+- `assets/client/`, `assets/service/`, `assets/database/` exist when `develop.md` has corresponding sections;
+- `assets/test/` exists when `test.md` exists;
+- `assets/references/` exists for design references;
+
+### Version Structure (per `version.md`)
+
+- version files use `version/x.y.z.md` pattern;
 - `version/0.1.0.md` exists when no other version file existed before initialization;
-- each active module has `requirements/`;
-- each accepted requirement has `prd.md`;
-- generated design/development/test files sit inside the owning requirement folder;
-- every generated requirement asset is under the requirement-local `assets/` folder;
-- version files use `version/x.y.z.md`;
-- links between requirement PRDs, design prompts, development plans, tests, and version files are bidirectional where applicable.
+- version files contain goal, release type, non-goals, risks, readiness checklist;
+- version files link to valid requirement PRDs using `[[modules/<module>/requirements/<requirement>/prd]]`;
+
+### Cross-Reference Validation
+
+- links between requirement PRDs, design prompts, development plans, tests, and version files are bidirectional where applicable;
+- all wikilinks resolve to existing files;
+- PRD status values are valid: `draft`, `confirmed`, `in-design`, `in-development`, `in-test`, `done`;
+- PRD design link points to valid `design.md` when status is `in-design` or later;
+- PRD develop link points to valid `develop.md` when status is `in-development` or later;
+- PRD test link points to valid `test.md` when status is `in-test` or later;
+
+### Template Compliance
+
+- all generated documents use corresponding templates from `.open-canal/templates/`;
+- all generated documents (except routing shims) have YAML frontmatter with `tags`;
+- `tags` are YAML lists without leading `#`, using `/` for nested tags;
+- `prd.md` frontmatter has only `tags` and `status`;
+- other metadata is in document body or index tables, not frontmatter;
