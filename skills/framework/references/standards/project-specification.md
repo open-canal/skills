@@ -66,6 +66,7 @@ Minimum root structure:
     repository.md
     demand.md
     version.md
+    xcode-mcp.md
     design.md
     development.md
     test.md

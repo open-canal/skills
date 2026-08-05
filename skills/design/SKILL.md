@@ -32,12 +32,7 @@ Use `.open-canal/templates/design.md` as the document skeleton.
 
 ### Common: DESIGN.md Gate
 
-Before generating any prototype prompt, check `.open-canal/design-standards/DESIGN.md` per the standard's DESIGN.md creation/update workflow:
-
-- **Missing** → follow the standard. The standard defines when to synthesize from an existing Stitch project, codebase, brand reference, or user-provided direction, and when to pause for design input.
-- **Invalid** → report malformed front matter, invalid token values, duplicate canonical sections, or token/prose conflicts per the standard.
-- **Underspecified** → report missing design coverage that blocks the target screens, such as missing primary color, typography, layout, or component guidance.
-- **Usable** → proceed.
+Before generating any prototype prompt, check `.open-canal/design-standards/DESIGN.md` per the standard's gate: missing → follow the DESIGN.md creation workflow and pause for approval; invalid or underspecified → report concrete problems and pause; usable → proceed.
 
 ### `create`
 

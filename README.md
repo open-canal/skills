@@ -9,6 +9,7 @@ Install the suite once; agents trigger the relevant workflow skill on demand:
 Setup:
 
 - `framework` — initialize a specification vault with `init`, or update global project context with `update`.
+- `xcode-mcp` — configure, verify, troubleshoot, or remove Xcode MCP access for the current AI agent.
 
 Product plan:
 
@@ -41,27 +42,16 @@ The `npx skills add` path is the public installation path. It makes open-canal d
 
 Installing open-canal does not create a `.open-canal/` scaffold in any project. To initialize a specification vault, run `framework init` from the target project root directory; it asks for product name, product description, and technical approach, then creates `.open-canal/standards/` and `.open-canal/templates/` in that project.
 
-### Claude Code
+### Agent-Specific Notes
 
-See [docs/README.claude.md](docs/README.claude.md) for detailed installation instructions.
-
-### Codex CLI
-
-See [docs/README.codex.md](docs/README.codex.md) for detailed installation instructions.
-
-### Crush
-
-See [docs/README.crush.md](docs/README.crush.md) for detailed installation instructions.
-
-### OpenCode
-
-See [docs/README.opencode.md](docs/README.opencode.md) for detailed installation instructions.
+See [docs/README.md](docs/README.md) for per-agent installation, discovery, verification, and troubleshooting notes for Claude Code, Codex CLI/App, Crush, and OpenCode.
 
 ## Skills
 
 | Stage | Skill | Description |
 |-------|-------|-------------|
 | Setup | [framework](skills/framework) | Run `init` to initialize a vault, or `update` to revise global product context |
+| Setup | [xcode-mcp](skills/xcode-mcp) | Configure, verify, troubleshoot, or remove Xcode MCP access for the current AI agent |
 | Product Plan | [demand](skills/demand) | Create or update a closed-loop requirement PRD in the owning module requirement pool |
 | Product Plan | [version](skills/version) | Create a version iteration file (`version/x.y.z.md`), add or remove requirements |
 | Implementation Plan | [design](skills/design) | Create or update Stitch/Figma AI prototype prompts from a demand PRD, manage the project DESIGN.md design system, and create requirement-local assets |

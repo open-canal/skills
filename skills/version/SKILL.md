@@ -33,37 +33,24 @@ Use `.open-canal/templates/version.md` as the document skeleton.
 
 ### `create`
 
-1. **Derive the semver number** — apply the derivation rules from the standard. Always confirm the derived version with the user.
-2. **Confirm release type** — confirm one of `major`, `minor`, `patch`, or `hotfix` per the standard.
-3. **Create the version file** — create `version/x.y.z.md` using the version template and content requirements from the standard. Keep the empty `## Requirements` section from the template (the table header with the placeholder row) but do not add actual requirement rows — those are populated by `version add`.
-4. **Validate scope** — report missing PRDs, ambiguous scope, and requirements too large for the version per the standard's scope rules.
+1. **Derive and confirm the semver number** with the user per the standard's derivation rules.
+2. **Confirm release type** — one of `major`, `minor`, `patch`, or `hotfix` per the standard.
+3. **Create the version file** — `version/x.y.z.md` from the template per the standard's content requirements (keep the empty `## Requirements` section; actual rows are populated by `version add`).
+4. **Validate scope** — report missing PRDs, ambiguous scope, and requirements too large per the standard's scope rules.
 
 ### `add`
 
 1. Confirm the target `version/x.y.z.md`.
 2. Select one or more existing requirement PRDs.
-3. Check duplicate membership, scope fit, and readiness gaps. Assess whether each requirement is small enough using the criteria in `.open-canal/standards/version.md`.
+3. Check duplicate membership, scope fit, and readiness gaps per the standard.
 4. Update the version file and each affected PRD together.
 5. Report missing design, develop, or test docs needed before implementation.
 
 ### `remove`
 
-1. Read the version file and affected requirement PRDs.
-2. Remove the requirement row from the version requirement list.
-3. Update the requirement PRD's version status to `backlog`.
-4. Update the version readiness checklist.
-5. Preserve design, develop, and test docs — they remain valid for future version assignments.
+1. Read the version file and affected PRDs; remove the requirement row, set the PRD status to `backlog`, and update the readiness checklist.
+2. Preserve design, develop, and test docs — they remain valid for future version assignments.
 
 ## Output
 
-### `create`
-
-Return a structured report: version number, release type, version file path, goal, requirement count (or none), scope warnings, and missing PRDs referenced.
-
-### `add`
-
-Return the updated version file, added requirement links, skipped requirements, and readiness gaps.
-
-### `remove`
-
-Return the updated version file, removed requirement links, and affected PRDs with their new version status.
+Return a structured report: version number, release type, version file path, goal, requirement count (or none), scope warnings, and missing PRDs for `create`; updated version file, added/skipped requirement links, and readiness gaps for `add`; updated version file, removed requirement links, and affected PRD statuses for `remove`.

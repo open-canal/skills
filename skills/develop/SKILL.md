@@ -36,7 +36,7 @@ Use `.open-canal/templates/develop.md` as the document skeleton for all generate
 2. Read `design.md` when UI or interaction behavior exists.
 3. Read the target vault's `.open-canal/development-standards/` files (platform, client, service, database, testing). Apply all conventions that constrain the development plan.
 4. Read linked version and existing `develop.md` when present.
-5. Generate or update `modules/<module-slug>/requirements/<requirement-slug>/develop.md`. When both client and service are involved, the file must contain separate **Client Design**, **Client Tasks**, **Service Design**, **Service Tasks** sections plus a **Contracts** section defining API and realtime contracts.
+5. Generate or update `modules/<module-slug>/requirements/<requirement-slug>/develop.md`. When both client and service are involved, include separate Client Design/Tasks and Service Design/Tasks sections plus a Contracts section per the standard.
 6. Keep downstream AI agent tasks small, explicit, independent, and traceable to PRD/design decisions. Follow task granularity rules in `.open-canal/standards/development.md`.
 7. Group tasks for independent parallel execution.
 8. Update the source PRD's develop link to point to the new `develop.md`.

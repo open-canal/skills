@@ -32,38 +32,17 @@ All scaffold output goes to the **target project root** — the agent's current 
 
 Confirm the target root with the user only when it is ambiguous.
 
-## Project Profile Questions
+## Init Profile
 
-For `init`, ask exactly these required questions before writing the scaffold:
-
-1. Product name: what is the product called?
-2. Product description: what does the product do?
-3. Technical approach: what broad platform or architecture is planned (web app, iOS app, desktop app, API service, etc.)? Include concrete frameworks when known.
-
-Use the answers to initialize `.open-canal/project.md`, the project summary in `.open-canal/AGENTS.md`, and `.open-canal/development-standards/platform.md`.
-
-For `update`, use the same fields to update global framework-level context. Do not rewrite requirement PRDs, design prompts, development plans, test plans, or version scope unless the user explicitly asks.
-
-## Version Bootstrap
-
-During `init`, create `version/0.1.0.md` when no `version/x.y.z.md` files exist. Use the version template as a planning placeholder. Do not ask version-specific questions during `init`, and do not copy the product description or initialization summary into the `0.1.0` version goal, release notes, or requirement list.
+For `init`, ask the standard's three required project profile questions (product name, product description, technical approach) before writing. For `update`, revise only the global project profile and derived summaries per the standard; do not rewrite requirement, version, design, develop, or test content unless the user explicitly asks.
 
 ## Obsidian Skills (Optional)
 
-Obsidian Skills (`kepano/obsidian-skills`) give agents specialized knowledge of Obsidian Flavored Markdown, Bases, JSON Canvas, and the Obsidian CLI. They improve output quality when generating Obsidian content.
+Probe whether obsidian-skills (`kepano/obsidian-skills`) are already available; do not install them automatically. Write a `## Required Skills` section into `.open-canal/AGENTS.md` listing the obsidian skills actually detected, or noting none were detected. When none are detected, suggest in the output report:
 
-**Check availability — do not install automatically.** Probe whether obsidian-skills are already available to the agent (e.g., list installed skills, check the skills directory).
-
-- **Already available:** probe the installed skills. Dynamically write a `## Required Skills` section into `.open-canal/AGENTS.md` listing every actually detected obsidian skill name and description. State that downstream skills should invoke the relevant obsidian skill when generating Obsidian content.
-- **Not available:** still write the `## Required Skills` section with a note that obsidian-skills were not detected. In the output report, suggest the user run:
-
-  ```bash
-  npx skills add https://github.com/kepano/obsidian-skills
-  ```
-
-  But do NOT execute this command during initialization. Installing skills produces agent-level side effects that are separate from vault initialization.
-
-Do NOT hardcode the skill list — it must reflect what was actually detected.
+```bash
+npx skills add https://github.com/kepano/obsidian-skills
+```
 
 ## Workflow
 
@@ -71,21 +50,18 @@ Do NOT hardcode the skill list — it must reflect what was actually detected.
 
 1. Determine the target vault root.
 2. Ask the three project profile questions.
-3. Check obsidian-skills availability (do not install — see above).
-4. Inspect the target repository (empty or existing vault).
-5. Create missing root shims, `.open-canal/`, `.open-canal/project.md`, `.open-canal/standards/`, `.open-canal/templates/`, `.obsidian/`, `modules/`, `version/`, and `version/0.1.0.md` per the standard. Do NOT create `DESIGN.md`.
-6. For non-empty vaults, preserve user content and add only missing structure.
-7. Run consistency checks from the standard. Report failures.
-8. Route future work to `demand`, `version`, `design`, `develop`, and `test`.
+3. Probe obsidian-skills availability (do not install — see above).
+4. Inspect the target repository; create missing shims, `.open-canal/`, `.obsidian/`, `modules/`, `version/`, and `version/0.1.0.md` per the standard. Do NOT create `DESIGN.md`.
+5. Preserve user content in non-empty vaults; add only missing structure.
+6. Run consistency checks from the standard; report failures and route future work to `demand`, `version`, `design`, `develop`, and `test`.
 
 ### `update`
 
 1. Read `.open-canal/project.md`, `.open-canal/AGENTS.md`, and `.open-canal/development-standards/platform.md`.
 2. Ask only for missing or changed project profile fields.
-3. Update the global project profile and derived routing summary.
-4. Preserve user-authored requirement, version, design, development, and test content.
-5. **Strict migration**: Scan and validate all file locations per skill standards (demand, version, design, develop, test). Move misplaced files to correct locations and update all wikilinks.
-6. Run consistency checks from the standard and report any manual migration items.
+3. Update the global project profile and derived routing summary; preserve user-authored requirement, version, design, development, and test content.
+4. Run the standard's strict migration: validate all file locations per skill standards, move misplaced files, and update all wikilinks.
+5. Run consistency checks from the standard and report any manual migration items.
 
 ## Output
 

@@ -48,6 +48,8 @@ Published skills must work from the files installed by the Skills CLI. Do not re
 
 `framework` must carry the runtime copies it needs under `skills/framework/references/standards/` and `skills/framework/references/templates/`, because Skills CLI installation does not expose repository-root files to installed skills.
 
+Agent-tooling setup skills that do not depend on `framework init` must carry their own required standard under `skills/<skill-name>/references/standards/` so the skill works when installed on its own.
+
 ## Manual Review
 
 After changing skills, inspect:

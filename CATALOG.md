@@ -1,6 +1,6 @@
 # Skill Catalog
 
-open-canal exposes six workflow entrypoints that together form a complete software specification methodology chain — from vault initialization through product planning (`demand`, `version`) and implementation planning (`design`, `develop`, `test`). Users do not need to manually chain every skill; agents trigger the relevant entrypoint on demand. Detailed rules live under `standards/`; skill bodies route agents to the relevant standard and keep only minimal operating guidance. Document skeletons for all generated files live under `templates/`.
+open-canal exposes seven workflow entrypoints that together form a complete software specification methodology chain — from setup (`framework`, `xcode-mcp`) through product planning (`demand`, `version`) and implementation planning (`design`, `develop`, `test`). Users do not need to manually chain every skill; agents trigger the relevant entrypoint on demand. Detailed rules live under `standards/`; skill bodies route agents to the relevant standard and keep only minimal operating guidance. Document skeletons for all generated files live under `templates/`.
 
 ## End-to-End Workflow
 
@@ -11,6 +11,7 @@ See `standards/workflow.md` for the full dependency chain, completion criteria, 
 | Skill | Use |
 | --- | --- |
 | `framework` | `init` initializes the specification vault and global project profile; `update` revises product name, product description, or technical approach. |
+| `xcode-mcp` | `configure` registers Xcode MCP for the current AI agent; `verify`, `troubleshoot`, and `remove` manage the connection lifecycle. |
 
 ## Product Plan
 

@@ -7,6 +7,7 @@ This directory is the authoring source for reusable rules and workflows in the o
 | Stage | Skill | Standard | Template |
 | --- | --- | --- | --- |
 | Setup | `framework` | `.open-canal/standards/project-specification.md` | `.open-canal/templates/project.md`, `.open-canal/templates/agents-vault.md`, `.open-canal/templates/claude-vault.md`, `.open-canal/templates/modules-index.md`, `.open-canal/templates/module-index.md`, `.open-canal/templates/version.md` |
+| Setup | `xcode-mcp` | `.open-canal/standards/xcode-mcp.md` or skill-local `references/standards/xcode-mcp.md` | N/A |
 | Product Plan | `demand` | `.open-canal/standards/demand.md` | `.open-canal/templates/prd.md` |
 | Product Plan | `version` | `.open-canal/standards/version.md` | `.open-canal/templates/version.md` |
 | Implementation Plan | `design` | `.open-canal/standards/design.md` | `.open-canal/templates/design.md` |
@@ -17,6 +18,7 @@ This directory is the authoring source for reusable rules and workflows in the o
 
 - `skill-repository.md`: repository layout, skill packaging, metadata review, and agent discovery.
 - `project-specification.md`: Obsidian specification vault initialization and global project context update flow.
+- `xcode-mcp.md`: current-agent Xcode MCP setup, verification, troubleshooting, and removal through `xcrun mcpbridge`.
 - `repository.md`: module requirement pools, assets, frontmatter, indexes, and migration rules.
 - `demand.md`: requirement creation, clarification, PRD placement, and PRD update rules.
 - `version.md`: `version/x.y.z.md` iteration creation, requirement assignment, and removal rules.

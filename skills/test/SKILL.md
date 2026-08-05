@@ -35,15 +35,9 @@ Use `.open-canal/templates/test.md` as the document skeleton for all generated t
 1. Confirm the target `develop.md` as the primary source. The test plan derives its scope from the develop plan.
 2. Read the requirement PRD, linked design, and develop docs. Derive version from links.
 3. Read the target vault's `.open-canal/development-standards/testing.md` and relevant platform/client/service/database standards. Apply testing framework, fixture, and environment conventions that constrain the test plan.
-4. Generate `modules/<module-slug>/requirements/<requirement-slug>/test.md` using the test template.
-5. Generate test sections only for the ends present in the target `develop.md`:
-   - **Client Tests** — generated when develop.md includes client design or client tasks; covers UI states, navigation, offline, accessibility.
-   - **Service Tests** — generated when develop.md includes service design or service tasks; covers contracts, auth, persistence, error, realtime.
-   - **Cross-End Contract Tests** — generated only when contracts exist in develop.md; if develop.md includes both client and service work but no contracts, mark cross-end tests as blocked. If develop.md is client-only or service-only, mark cross-end as N/A.
-6. All test cases use Given-When-Then format with the standard ID scheme (`C-`, `S-`, `X-` prefixes).
-7. Generate only the applicable client/service tests from the target develop.md. Cross-end contract tests are blocked only when both client and service ends exist in develop.md but contracts are missing. Do not generate client tests for service-only plans, and do not generate service tests for client-only plans.
-8. Report missing implementation details as blockers instead of inventing contracts.
-9. Update the source PRD's test link to point to the new `test.md`.
+4. Generate `modules/<module-slug>/requirements/<requirement-slug>/test.md` from the template per the standard: client/service sections only where the develop plan has those ends; cross-end contract tests blocked when contracts are missing (or N/A for single-end plans); use the standard's Given-When-Then format and ID scheme.
+5. Report missing implementation details as blockers instead of inventing contracts.
+6. Update the source PRD's test link to point to the new `test.md`.
 
 ### `update`
 

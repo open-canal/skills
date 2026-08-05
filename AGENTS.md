@@ -30,6 +30,7 @@ No build, install, or repository command is required. Agents read `skills/` and 
 | Stage | Skill | Use |
 | --- | --- | --- |
 | Setup | `framework` | Run `init` to initialize an Obsidian software project specification vault, or `update` to revise global project context. |
+| Setup | `xcode-mcp` | Configure, verify, troubleshoot, or remove Xcode MCP access for the current AI agent. |
 | Product Plan | `demand` | Create or update a closed-loop requirement PRD in the owning module requirement pool. |
 | Product Plan | `version` | Create `version/x.y.z.md`, add/remove requirements to/from an iteration version. |
 | Implementation Plan | `design` | Create or update Stitch/Figma AI prototype prompts, manage the project DESIGN.md design system, and create requirement-local assets. |

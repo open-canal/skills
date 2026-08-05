@@ -4,8 +4,8 @@
   "groupings": [
     {
       "title": "Setup",
-      "description": "Install the open-canal methodology suite, initialize a specification vault, and update global project context.",
-      "skills": ["framework"]
+      "description": "Install the open-canal methodology suite, initialize a specification vault, update global project context, and configure agent tooling.",
+      "skills": ["framework", "xcode-mcp"]
     },
     {
       "title": "Product Plan",
